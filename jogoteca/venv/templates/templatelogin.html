@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Jogoteca</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename = 'bootstrap.css') }}">
+    
+        <style>
+            body {
+                padding-top: 70px; /* Ajuste este valor de acordo com a altura da sua navbar */
+            }
+        </style>
+    </head>
+<body>
+    <nav class="navbar navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+          <a class="navbar-brand"><h1>Faça seu login</h1></a>
+         
+       
+        </div>
+      </nav>
+    <div class="container">
+
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %} 
+            <ul id="messages" class="list-unstyled">
+            {% for message in messages %}
+                <li class="alert alert-success">{{ message }}</li>
+            {% endfor %}
+            </ul>
+      {% endif %}
+    {% endwith %}
+     <header>       
+ 
+     </header>  
+      {% block conteudo %}{% endblock %}
+
+     </div>
+  
+
+
+</body>
+</html>      

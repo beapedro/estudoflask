@@ -1,34 +1,33 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Jogoteca</title>
-    <link rel="stylesheet" href="../static/bootstrap.css">
-
-</head>
-<body>
-    <div class="container">
-      <div class="page-header">
-          <h1>{{ titulo }}</h1>
-      </div>
-      <form action="/criar" method="post">
-        <fieldset>
-          <div class="form-group">
-            <label for="nome">Nome</label>
-            <input type="text" id="nome" name="nome" class="form-control">
-          </div>
-          <div class="form-group">
-            <label for="categoria">Categoria</label>
-            <input type="text" id="categoria" name="categoria" class="form-control">
-          </div>
-          <div class="form-group">
-            <label for="console">Console</label>
-            <input type="text" id="console" name="console" class="form-control">
-          </div>
-          <button type="submit" class="btn btn-primary btn-salvar">Salvar</button>
-        </fieldset>
-      </form>
+{% extends "template.html" %}
+{% block conteudo %}
+<a href = {{ url_for('index') }}> <button type="button" class='btn btn-list'> Lista de jogos </button></a> 
+<form  action="{{ url_for('criar') }}" method="post" enctype="multipart/form-data">
+  
+  <form action="{{ url_for('atualizar') }}" method="post" class="needs-validation" enctype="multipart/form-data" novalidate></form>
+    <figure class="col-md-4 text-center">
+      <img class="img-fluid img-thumbnail"  src="{{ url_for('imagem', nome_arquivo='default.jpg') }}" alt="Capa do jogo">
+      <figcaption class="mt-2">
+        <label class="fileContainer btn btn-primary w-100">
+          Alterar capa
+          <input type="file" name="arquivo" accept=".jpg" style="display: none;">
+        </label>
+      </figcaption>
+    </figure>
+  <fieldset>
+    <div class="form-group">
+      <label for="nome">Nome</label>
+      <input type="text" id="nome" name="nome" class="form-control" required>
     </div>
-</body>
-</html>
+    <div class="form-group">
+      <label for="categoria">Categoria</label>
+      <input type="text" id="categoria" name="categoria" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="console">Console</label>
+      <input type="text" id="console" name="console" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary btn-salvar">Salvar</button>
+  </fieldset>
+</form>
+
+{% endblock %}
