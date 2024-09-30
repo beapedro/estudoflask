@@ -7,16 +7,26 @@ import time
 
 @app.route('/')
 def index():
-   
-    lista = Jogos.query.order_by(Jogos.id)
-
-    if 'usuario_logado' not in session or session['usuario_logado'] == None:
-        return redirect(url_for('login', next=url_for('novo'))) 
-   
+ 
+    lista = Jogos.query.order_by(Jogos.id).all()
+    capa_jogo = [recupera_imagem(jogo.id) for jogo in lista]
+    if 'usuario_logado' not in session or session['usuario_logado'] is None:
+        return redirect(url_for('login', next=url_for('novo')))
+    
+ 
     user = Usuarios.query.filter_by(nickname=session['usuario_logado']).first()
+ 
     user_pfp = recupera_pfp(user.nickname) 
-    return render_template('lista.html', titulo='Jogos', jogos=lista,usuario = session['usuario_logado'], status ='active', user_pfp = user_pfp)
-
+ 
+    return render_template(
+        'lista.html', 
+        titulo='Jogos', 
+        jogos=lista,   
+        usuario=session['usuario_logado'], 
+        status='active', 
+        user_pfp=user_pfp,
+        capa_jogo = capa_jogo
+    )
 
 @app.route('/novo')
 def novo():

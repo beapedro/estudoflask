@@ -1,9 +1,7 @@
 {% extends "template.html" %}
 {% block conteudo %}
 <div class="list-games">
-  <a href={{ url_for('index') }}> <button type="button" class='btn btn-list'> Lista de jogos </button></a>
 </div>
-
 <div class="container mt-4">
   <form action="{{ url_for('atualizar') }}" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
     <figure class="col-md-4 text-center">
