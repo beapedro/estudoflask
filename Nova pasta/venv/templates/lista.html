@@ -1,0 +1,57 @@
+{% extends "template.html" %}
+{% block conteudo %}
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+<div class="row">
+	<div class="col-lg-12">
+		<div class="main-box clearfix">
+			<div class="table-responsive">
+				<table class="table user-list">
+					<thead>
+						<tr>
+							<th><span>Jogo</span></th>
+							<th><span>Console</span></th>
+							<th>&nbsp;</th>
+						</tr>
+					</thead>
+					<tbody>
+                     {% for jogo in jogos %}
+
+                    
+                     
+                     <tbody>
+                        <tr>
+                           <td>
+                          
+                               <img src="{{ url_for('imagem', nome_arquivo=capa_jogo) }}" alt="{{ jogo.nome }}" class="img-thumbnail" style="width: 50px; height: 50px; object-fit: cover;">
+                               {{ jogo.nome }} 
+                               <span class="user-subhead">{{ jogo.categoria }}</span>
+                           </td>
+                           <td>{{ jogo.console }}</td>
+                           <td>
+                               <a href="{{ url_for('editar', id=jogo.id) }}" class="table-link info">
+                                   <span class="fa-stack">
+                                       <i class="fa fa-square fa-stack-2x"></i>
+                                       <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                   </span>
+                               </a>
+                               <a href="{{ url_for('deletar', id=jogo.id) }}" class="table-link danger">
+                                   <span class="fa-stack">
+                                       <i class="fa fa-square fa-stack-2x"></i>
+                                       <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                   </span>
+                               </a>
+                           </td>
+                       </tr>
+                     </tbody>
+                     
+                     {%endfor%}
+
+                  </tbody>
+               </table>
+               <div class="btn-add">
+                  <a href="{{ url_for('novo')}}"><button type="button" class="btn btn-add"> Adicionar novo jogo</button>
+                  </a>
+               </div>
+
+               {% endblock %}

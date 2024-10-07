@@ -10,8 +10,8 @@ class Jogos(db.Model):
         return '<Name %r>' % self.name 
     
 class Usuarios(db.Model):
-    nickname = db.Column(db.String(8), primary_key = True, nullable = False)
-    nome = db.Column(db.String(20), nullable = False)
+    nickname = db.Column(db.String(25), primary_key = True, nullable = False)
+    nome = db.Column(db.String(500), nullable = False)
     senha = db.Column(db.String(100), nullable = False)    
 
     def __repr__(self):
@@ -20,7 +20,8 @@ class Usuarios(db.Model):
 class Amigos(db.Model):
     amizadeid = db.Column(db.String(36), primary_key = True, nullable = False)
     amigo1 = db.Column(db.String(25), nullable = False)
-    amigo2 = db.Column(db.String(25), nullable = False)   
+    amigo2 = db.Column(db.String(25), nullable = False) 
+    mensagem = db.Column(db.String(500))  
     confirmacao = db.Column(db.Boolean, nullable = False) 
     datainicio = db.Column(db.DateTime, nullable = False)
 

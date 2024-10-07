@@ -20,16 +20,16 @@
     <fieldset>
 
         <div class="mb-3">
-        <label for="nome" class="form-labelSettings">Nickname</label>
-        <input type="text" id="nickname" name="nickname" class="form-controlSettings" value="{{usuario}}" required>
+        <label for="nome" class="form-label">Nickname</label>
+        <input type="text" id="nickname" name="nickname" class="form-control" value="{{usuario}}" required>
         <div class="invalid-feedback">
         
         </div>
       </div>
 
       <div class="mb-3">
-        <label for="categoria" class="form-labelSettings">Nome</label>
-        <input type="text" id="nome" name="nome" class="form-controlSettings" value="{{ nome }}" required>
+        <label for="categoria" class="form-label">Nome</label>
+        <input type="text" id="nome" name="nome" class="form-control" value="{{ nome }}" required>
         <div class="invalid-feedback">
         
         </div>
@@ -37,18 +37,18 @@
 
       
       <div class="mb-3">
-        <label for="console" class="form-labelSettings">Senha</label>
-        <input type="password" id="senha" name="senha" class="form-controlSettings" value="{{ senha }}" required>
+        <label for="console" class="form-label">Senha</label>
+        <input type="password" id="senha" name="senha" class="form-control" value="{{ senha }}" required>
         <div class="invalid-feedback">
           
         </div>
       </div>
 
-      <button type="submit" class="btn btn-primarySettings">Salvar</button>
+      <button type="submit" class="btn btn-primary">Salvar</button>
      </fieldset>
     </form>
       <a href = {{url_for('deletaruser', nickname = usuario.nickname)}}>
-         <button type="button" class="btn btn-dangerSettings">Deletar</button> </td>
+         <button type="button" class="btn btn-danger">Deletar</button> </td>
       <a/>   
 
 
