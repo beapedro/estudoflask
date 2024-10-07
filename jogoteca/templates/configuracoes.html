@@ -1,0 +1,57 @@
+{% extends "template.html" %}
+{% block conteudo %}
+
+
+<div class="container mt-4">
+  <form action="{{ url_for('userupdate') }}" method="post" class="needs-validation" enctype="multipart/form-data" novalidate>
+
+    <figure class="col-md-4 text-center">
+      <img class="img-fluid img-thumbnail" src="{{ url_for('pfp', nome_arquivo = user_pfp) }}" alt="Perfil">
+      <figcaption class="mt-2">
+        <label class="fileContainer btn btn-primary w-100">
+          Alterar foto de perfil
+          <input type="file" name="arquivo" accept=".jpg" style="display: none;">
+        </label>
+      </figcaption>
+    </figure>
+    
+    
+    
+    <fieldset>
+
+        <div class="mb-3">
+        <label for="nome" class="form-labelSettings">Nickname</label>
+        <input type="text" id="nickname" name="nickname" class="form-controlSettings" value="{{usuario}}" required>
+        <div class="invalid-feedback">
+        
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="categoria" class="form-labelSettings">Nome</label>
+        <input type="text" id="nome" name="nome" class="form-controlSettings" value="{{ nome }}" required>
+        <div class="invalid-feedback">
+        
+        </div>
+      </div>
+
+      
+      <div class="mb-3">
+        <label for="console" class="form-labelSettings">Senha</label>
+        <input type="password" id="senha" name="senha" class="form-controlSettings" value="{{ senha }}" required>
+        <div class="invalid-feedback">
+          
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primarySettings">Salvar</button>
+     </fieldset>
+    </form>
+      <a href = {{url_for('deletaruser', nickname = usuario.nickname)}}>
+         <button type="button" class="btn btn-dangerSettings">Deletar</button> </td>
+      <a/>   
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "template.html" %}
+{% block conteudo %}
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+<div class="row">
+	<div class="col-lg-12">
+		<div class="main-box clearfix">
+			<div class="table-responsive">
+				<table class="table user-list">
+					<thead>
+						<tr>
+							<th><span>Amigo</span></th>
+							<th><span>Mensagem</span></th>
+							<th>&nbsp;</th>
+						</tr>
+					</thead>
+					<tbody>
+                    {% for amigo in amigos %}
+
+                    
+                     
+                     <tbody>
+                        <tr>
+                           <td>
+                            <img class="img-fluid img-thumbnail" src="{{ url_for('pfp', nome_arquivo=amigo_pfp) }}" alt="Perfil" style="width: 65px; height: 65px; border-radius: 50%; margin-right: 5px;">
+                               {{ amigos.amigo1 }} 
+                           </td>
+                           <td>{{ amigos.mensagem }}</td>
+                           <td>
+                               <a href="" class="table-link info">
+                                   <span class="fa-stack">
+                                       <i class="fa fa-square fa-stack-2x"></i>
+                                       <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                   </span>
+                               </a>
+                               <a href="" class="table-link danger">
+                                   <span class="fa-stack">
+                                       <i class="fa fa-square fa-stack-2x"></i>
+                                       <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                   </span>
+                               </a>
+                           </td>
+                       </tr>
+                     </tbody>
+                     
+                    {%endfor%}
+
+                  </tbody>
+               </table>
+               <div class="btn-add">
+                  <a href="{{ url_for('solicitacao')}}"><button type="button" class="btn btn-add"> Adicionar amigo</button>
+                  </a>
+               </div>
+
+               {% endblock %}

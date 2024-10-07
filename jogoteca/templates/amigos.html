@@ -1,0 +1,78 @@
+{% extends "template.html" %}
+{% block conteudo %}
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+<div class="row">
+	<div class="col-lg-12">
+		<div class="main-box clearfix">
+			<div class="table-responsive">
+				<table class="table user-list">
+					<thead>
+						<tr>
+							<th><span>Nome</span></th>
+							<th><span>Mensagem</span></th>
+							<th>&nbsp;</th>
+						</tr>
+					</thead>
+					<tbody>
+                        {% for amigo in amigos %}
+                        <tr>
+                            <td>
+                                <img class="img-fluid img-thumbnail" src="{{ url_for('pfp', nome_arquivo=amigo.pfp) }}" alt="Perfil" style="width: 65px; height: 65px; border-radius: 50%; margin-right: 5px;">
+                                {{ amigo.nickname }}
+                            </td>
+                            <td>{{ amigo.mensagem }}</td>
+                            <td>
+                                <a href="{{ url_for('aceitaconvite', amigo1=amigo.nickname, amigo2=usuario) }}" class="table-link info">
+                                    <span class="fa-stack">
+                                        <i class="fa fa-square fa-stack-2x"></i>
+                                        <i class="fa fa-check fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                                <a href="{{ url_for('deletaconvite', amigo1 = amigo.nickname, amigo2 = usuario)}}" class="table-link danger">
+                                    <span class="fa-stack">
+                                        <i class="fa fa-square fa-stack-2x"></i>
+                                        <i class="fa fa-close fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                  </tbody>
+               </table>
+               
+               <div class="bd-example">
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Adicionar amigo</button>
+
+                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Apresente-se</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        
+                        <form method="POST" action="{{ url_for('solicitacao') }}">
+                          <div class="modal-body">
+                            <div class="form-group">
+                              <label for="recipient-name" class="col-form-label">Usuário:</label>
+                              <input type="text" class="form-control" name="nickname" placeholder="Insira o nickname do seu amigo" required>
+                            </div>
+                            <div class="form-group">
+                              <label for="message-text" class="col-form-label">Mensagem:</label>
+                              <textarea class="form-control" id="mensagem" name="mensagem"></textarea>
+                            </div>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            <button type="submit" class="btn btn-primary">Enviar solicitação</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+               </div>
+               
+{% endblock %}
